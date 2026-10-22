@@ -95,7 +95,7 @@ export const ProductCard = ({ product }) => {
             color: isFavorite ? '#dc2626' : '#374151'
           }}
         >
-          {isFavorite ? '❤️' : '🤍'}
+          {isFavorite ? 'В избранном' : 'В избранное'}
         </button>
 
         <button 
@@ -120,4 +120,3 @@ export const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
-

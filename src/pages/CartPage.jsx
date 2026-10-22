@@ -44,7 +44,7 @@ export const CartPage = () => {
       {cart.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '60px 20px', backgroundColor: '#f9fafb', borderRadius: '12px' }}>
           <p style={{ fontSize: '20px', color: '#4b5563', marginBottom: '16px' }}>
-            Ваша корзина пуста 🛒
+            Ваша корзина пуста
           </p>
           <Link
             to="/"
@@ -107,7 +107,6 @@ export const CartPage = () => {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    {/* Количество +/- */}
                     <div style={{ display: 'flex', alignItems: 'center', border: '1px solid #d1d5db', borderRadius: '6px' }}>
                       <button
                         onClick={() => changeQuantity(item.id, -1)}
@@ -152,15 +151,16 @@ export const CartPage = () => {
                       onClick={() => removeFromCart(item.id)}
                       title="Удалить из корзины"
                       style={{
-                        background: 'none',
-                        border: 'none',
-                        color: '#ef4444',
+                        padding: '6px 12px',
+                        border: '1px solid #fee2e2',
+                        backgroundColor: '#fef2f2',
+                        color: '#dc2626',
+                        borderRadius: '6px',
                         cursor: 'pointer',
-                        fontSize: '18px',
-                        padding: '4px'
+                        fontSize: '13px'
                       }}
                     >
-                      🗑️
+                      Удалить
                     </button>
                   </div>
                 </div>
@@ -168,7 +168,6 @@ export const CartPage = () => {
             })}
           </div>
 
-          {/* Итог заказа */}
           <div
             style={{
               padding: '24px',

@@ -19,7 +19,7 @@ export const FavoritesPage = () => {
       {favorites.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '60px 20px', backgroundColor: '#f9fafb', borderRadius: '12px' }}>
           <p style={{ fontSize: '20px', color: '#4b5563', marginBottom: '16px' }}>
-            В избранном пока ничего нет 🤍
+            В избранном пока ничего нет
           </p>
           <Link
             to="/"

@@ -88,7 +88,6 @@ export const ProductDetailPage = () => {
       </button>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '36px' }}>
-        {/* Галерея изображений */}
         <div>
           <div style={{ border: '1px solid #e5e7eb', borderRadius: '12px', overflow: 'hidden', backgroundColor: '#f9fafb' }}>
             <img 
@@ -134,7 +133,6 @@ export const ProductDetailPage = () => {
           )}
         </div>
 
-        {/* Информация о товаре */}
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
             {product.category?.name && (
@@ -167,7 +165,6 @@ export const ProductDetailPage = () => {
             </div>
           </div>
 
-          {/* Кнопки действий */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', borderTop: '1px solid #e5e7eb', paddingTop: '20px' }}>
             <button
               onClick={() => addToCart(product)}
@@ -198,7 +195,7 @@ export const ProductDetailPage = () => {
                 cursor: 'pointer'
               }}
             >
-              {isFavorite ? '❤️ В избранном' : '🤍 В избранное'}
+              {isFavorite ? 'В избранном' : 'В избранное'}
             </button>
 
             <Link
@@ -217,7 +214,7 @@ export const ProductDetailPage = () => {
                 cursor: 'pointer'
               }}
             >
-              ✏️ Редактировать
+              Редактировать
             </Link>
 
             <button
@@ -233,7 +230,7 @@ export const ProductDetailPage = () => {
                 cursor: isDeleting ? 'not-allowed' : 'pointer'
               }}
             >
-              {isDeleting ? 'Удаление...' : '🗑️ Удалить'}
+              {isDeleting ? 'Удаление...' : 'Удалить'}
             </button>
           </div>
         </div>
@@ -243,4 +240,3 @@ export const ProductDetailPage = () => {
 };
 
 export default ProductDetailPage;
-

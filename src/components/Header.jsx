@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <header className="header" style={{ padding: '16px 24px', borderBottom: '1px solid #e0e0e0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#ffffff' }}>
       <NavLink to="/" style={{ textDecoration: 'none', color: '#111', fontSize: '20px', fontWeight: 'bold' }}>
-        🛍️ ReactShop
+        ReactShop
       </NavLink>
       <nav style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
         <NavLink 
@@ -37,7 +37,7 @@ export const Header = () => {
           to="/create"
           style={({ isActive }) => ({ textDecoration: 'none', color: isActive ? '#0070f3' : '#333', fontWeight: isActive ? '600' : '400' })}
         >
-          + Создать товар
+          Создать товар
         </NavLink>
       </nav>
     </header>
@@ -45,4 +45,3 @@ export const Header = () => {
 };
 
 export default Header;
-

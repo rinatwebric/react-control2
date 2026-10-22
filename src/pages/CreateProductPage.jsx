@@ -22,7 +22,6 @@ export const CreateProductPage = () => {
   const [initialLoading, setInitialLoading] = useState(isEditMode);
   const [error, setError] = useState(null);
 
-  // Загрузка категорий и данных товара (при редактировании)
   useEffect(() => {
     const init = async () => {
       try {
@@ -67,7 +66,6 @@ export const CreateProductPage = () => {
       return;
     }
 
-    // Правило: к названию обязательно добавлять фамилию
     if (surname.trim() && !finalTitle.toLowerCase().includes(surname.trim().toLowerCase())) {
       finalTitle = `${surname.trim()} ${finalTitle}`;
     }
@@ -140,7 +138,6 @@ export const CreateProductPage = () => {
       )}
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        {/* Фамилия автора (по правилу проекта) */}
         <div>
           <label style={{ display: 'block', marginBottom: '6px', fontWeight: '500', fontSize: '14px', color: '#374151' }}>
             Ваша фамилия (по требованию: обязательно в названии):
@@ -157,7 +154,6 @@ export const CreateProductPage = () => {
           </small>
         </div>
 
-        {/* Название */}
         <div>
           <label style={{ display: 'block', marginBottom: '6px', fontWeight: '500', fontSize: '14px', color: '#374151' }}>
             Название товара *
@@ -173,7 +169,6 @@ export const CreateProductPage = () => {
           />
         </div>
 
-        {/* Цена */}
         <div>
           <label style={{ display: 'block', marginBottom: '6px', fontWeight: '500', fontSize: '14px', color: '#374151' }}>
             Цена ($) *
@@ -191,7 +186,6 @@ export const CreateProductPage = () => {
           />
         </div>
 
-        {/* Категория */}
         <div>
           <label style={{ display: 'block', marginBottom: '6px', fontWeight: '500', fontSize: '14px', color: '#374151' }}>
             Категория *
@@ -211,7 +205,6 @@ export const CreateProductPage = () => {
           </select>
         </div>
 
-        {/* Ссылка на изображение */}
         <div>
           <label style={{ display: 'block', marginBottom: '6px', fontWeight: '500', fontSize: '14px', color: '#374151' }}>
             Ссылка на изображение (URL)
@@ -226,7 +219,6 @@ export const CreateProductPage = () => {
           />
         </div>
 
-        {/* Описание */}
         <div>
           <label style={{ display: 'block', marginBottom: '6px', fontWeight: '500', fontSize: '14px', color: '#374151' }}>
             Описание товара
@@ -241,7 +233,6 @@ export const CreateProductPage = () => {
           />
         </div>
 
-        {/* Кнопки */}
         <div style={{ display: 'flex', gap: '12px', marginTop: '12px' }}>
           <button
             type="submit"
@@ -283,4 +274,3 @@ export const CreateProductPage = () => {
 };
 
 export default CreateProductPage;
-

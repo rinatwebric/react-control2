@@ -8,7 +8,6 @@ const LIMIT = 12;
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Достаем параметры из URL
   const title = searchParams.get('title') || '';
   const categoryId = searchParams.get('categoryId') || '';
   const price_min = searchParams.get('price_min') || '';
@@ -21,14 +20,12 @@ export const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Загрузка категорий один раз
   useEffect(() => {
     getCategories()
       .then((data) => setCategories(data || []))
       .catch((err) => console.error('Ошибка загрузки категорий:', err));
   }, []);
 
-  // Обновление URL-параметров (с автосбросом страницы на 1 при изменении фильтров)
   const updateParam = (key, value, resetPage = true) => {
     const nextParams = new URLSearchParams(searchParams);
     if (value) {
@@ -44,7 +41,6 @@ export const HomePage = () => {
     setSearchParams(nextParams);
   };
 
-  // Загрузка товаров при изменении параметров
   useEffect(() => {
     const fetchCatalog = async () => {
       try {
@@ -74,7 +70,6 @@ export const HomePage = () => {
     fetchCatalog();
   }, [title, categoryId, price_min, price_max, page]);
 
-  // Сортировка по цене на клиенте
   const sortedProducts = [...products].sort((a, b) => {
     if (sort === 'asc') return a.price - b.price;
     if (sort === 'desc') return b.price - a.price;
@@ -87,7 +82,6 @@ export const HomePage = () => {
         Каталог товаров
       </h1>
 
-      {/* Панель фильтров и сортировки */}
       <div 
         style={{ 
           display: 'grid', 
@@ -100,7 +94,6 @@ export const HomePage = () => {
           marginBottom: '24px' 
         }}
       >
-        {/* Поиск по названию */}
         <div>
           <label style={{ display: 'block', fontSize: '13px', fontWeight: '500', color: '#4b5563', marginBottom: '4px' }}>
             Поиск
@@ -114,7 +107,6 @@ export const HomePage = () => {
           />
         </div>
 
-        {/* Категория */}
         <div>
           <label style={{ display: 'block', fontSize: '13px', fontWeight: '500', color: '#4b5563', marginBottom: '4px' }}>
             Категория
@@ -133,7 +125,6 @@ export const HomePage = () => {
           </select>
         </div>
 
-        {/* Цена от */}
         <div>
           <label style={{ display: 'block', fontSize: '13px', fontWeight: '500', color: '#4b5563', marginBottom: '4px' }}>
             Цена от ($)
@@ -148,7 +139,6 @@ export const HomePage = () => {
           />
         </div>
 
-        {/* Цена до */}
         <div>
           <label style={{ display: 'block', fontSize: '13px', fontWeight: '500', color: '#4b5563', marginBottom: '4px' }}>
             Цена до ($)
@@ -163,7 +153,6 @@ export const HomePage = () => {
           />
         </div>
 
-        {/* Сортировка */}
         <div>
           <label style={{ display: 'block', fontSize: '13px', fontWeight: '500', color: '#4b5563', marginBottom: '4px' }}>
             Сортировка
@@ -180,7 +169,6 @@ export const HomePage = () => {
         </div>
       </div>
 
-      {/* Состояние загрузки и ошибок */}
       {loading && (
         <div style={{ textAlign: 'center', padding: '40px 0' }}>
           <h2>Загрузка товаров...</h2>
@@ -205,7 +193,6 @@ export const HomePage = () => {
         </div>
       )}
 
-      {/* Сетка товаров */}
       {!loading && !error && sortedProducts.length > 0 && (
         <>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '20px' }}>
@@ -214,7 +201,6 @@ export const HomePage = () => {
             ))}
           </div>
 
-          {/* Пагинация */}
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', marginTop: '36px' }}>
             <button
               disabled={page <= 1}
