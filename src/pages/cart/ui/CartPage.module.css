@@ -1,0 +1,248 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  color: #0f172a;
+}
+
+.clearBtn {
+  background: none;
+  border: none;
+  color: #dc2626;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+  padding: 4px;
+  transition: opacity 0.15s ease;
+}
+
+.clearBtn:hover {
+  opacity: 0.8;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.emptyText {
+  font-size: 20px;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+.shopBtn {
+  display: inline-block;
+  padding: 10px 22px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.15s ease;
+}
+
+.shopBtn:hover {
+  background-color: #1d4ed8;
+}
+
+.cartLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.itemCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.itemMain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1 1 300px;
+}
+
+.itemImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background-color: #f1f5f9;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemTitle {
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.15s ease;
+}
+
+.itemTitle:hover {
+  color: #2563eb;
+}
+
+.itemPrice {
+  margin: 4px 0 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.itemControls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.counterBtn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: #f8fafc;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counterBtn:hover {
+  background-color: #e2e8f0;
+}
+
+.counterCount {
+  min-width: 36px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.itemTotal {
+  min-width: 80px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 16px;
+  color: #059669;
+}
+
+.deleteBtn {
+  padding: 6px 14px;
+  border: 1px solid #fecaca;
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.deleteBtn:hover {
+  background-color: #fee2e2;
+  border-color: #f87171;
+}
+
+.summary {
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #475569;
+}
+
+.summaryTotalRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+}
+
+.totalPrice {
+  color: #059669;
+}
+
+.checkoutBtn {
+  width: 100%;
+  padding: 14px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.checkoutBtn:hover {
+  background-color: #1d4ed8;
+}
+
+.checkoutBtn:active {
+  transform: scale(0.99);
+}

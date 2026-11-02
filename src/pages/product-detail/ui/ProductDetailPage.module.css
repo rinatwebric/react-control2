@@ -1,0 +1,261 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.backBtn {
+  margin-bottom: 20px;
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.backBtn:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 36px;
+}
+
+.imageSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainImageWrapper {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.mainImage {
+  width: 100%;
+  height: 380px;
+  object-fit: contain;
+  display: block;
+  background-color: #f8fafc;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.thumbBtn {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 2px;
+  background-color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease;
+}
+
+.thumbBtn:hover {
+  border-color: #94a3b8;
+}
+
+.thumbBtnActive {
+  border: 2px solid #2563eb;
+}
+
+.thumbImg {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.category {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  background-color: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 8px 0 16px 0;
+  color: #0f172a;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #059669;
+  margin: 0 0 20px 0;
+}
+
+.descriptionBlock {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+  margin-bottom: 24px;
+}
+
+.descHeading {
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+  margin: 0 0 8px 0;
+}
+
+.descText {
+  color: #475569;
+  line-height: 1.6;
+  font-size: 15px;
+  margin: 0;
+}
+
+.actionsBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 20px;
+}
+
+.cartBtn {
+  flex: 1 1 180px;
+  padding: 12px 20px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cartBtn:hover {
+  background-color: #1d4ed8;
+}
+
+.favBtn {
+  padding: 12px 18px;
+  background-color: #f8fafc;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.favBtn:hover {
+  background-color: #f1f5f9;
+}
+
+.favBtnActive {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+.favBtnActive:hover {
+  background-color: #fee2e2;
+}
+
+.editBtn {
+  padding: 12px 18px;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.editBtn:hover {
+  background-color: #e2e8f0;
+}
+
+.deleteBtn {
+  padding: 12px 18px;
+  background-color: #dc2626;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.deleteBtn:hover:not(:disabled) {
+  background-color: #b91c1c;
+}
+
+.deleteBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.loading {
+  padding: 60px 20px;
+  text-align: center;
+  color: #64748b;
+}
+
+.errorState {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.errorState h2 {
+  color: #dc2626;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.backCatalogBtn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.backCatalogBtn:hover {
+  background-color: #f8fafc;
+}
