@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import type { NavLinkRenderProps } from 'react-router-dom';
 import { useFavoritesStore } from '@/features/favorites';
 import { useCartStore } from '@/features/cart';
 import styles from './Header.module.css';
@@ -10,7 +11,7 @@ export const Header = () => {
   const favoritesCount = favorites.length;
   const cartCount = cart.reduce((total, item) => total + (item.count || 0), 0);
 
-  const getNavLinkClass = ({ isActive }) =>
+  const getNavLinkClass = ({ isActive }: NavLinkRenderProps) =>
     isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink;
 
   return (

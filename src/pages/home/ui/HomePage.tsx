@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getProducts, getCategories } from '@/entities/product';
+import type { Category, Product, ProductsQuery } from '@/entities/product';
 import { ProductGrid } from '@/widgets/product-grid';
 import styles from './HomePage.module.css';
 
@@ -16,10 +17,10 @@ export const HomePage = () => {
   const page = parseInt(searchParams.get('page') || '1', 10);
   const sort = searchParams.get('sort') || '';
 
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     getCategories()
@@ -27,7 +28,7 @@ export const HomePage = () => {
       .catch((err) => console.error('Ошибка загрузки категорий:', err));
   }, []);
 
-  const updateParam = (key, value, resetPage = true) => {
+  const updateParam = (key: string, value: string, resetPage = true) => {
     const nextParams = new URLSearchParams(searchParams);
     if (value) {
       nextParams.set(key, value);
@@ -49,7 +50,7 @@ export const HomePage = () => {
         setError(null);
 
         const offset = (page - 1) * LIMIT;
-        const params = {
+        const params: ProductsQuery = {
           limit: LIMIT,
           offset,
         };

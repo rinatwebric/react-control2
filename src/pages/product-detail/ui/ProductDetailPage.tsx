@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 import {
   getProductById,
   deleteProduct,
   getCleanImageUrl,
   getCategoryName,
 } from '@/entities/product';
+import type { Product } from '@/entities/product';
 import { useFavoritesStore } from '@/features/favorites';
 import { useCartStore } from '@/features/cart';
 import styles from './ProductDetailPage.module.css';
@@ -14,10 +16,10 @@ export const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [selectedImage, setSelectedImage] = useState('');
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
   const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
@@ -25,6 +27,11 @@ export const ProductDetailPage = () => {
   const addToCart = useCartStore((state) => state.addToCart);
 
   useEffect(() => {
+    if (!id) {
+      setError('Товар не найден');
+      setLoading(false);
+      return;
+    }
     const fetchProduct = async () => {
       try {
         setLoading(true);
@@ -45,6 +52,7 @@ export const ProductDetailPage = () => {
   }, [id]);
 
   const handleDelete = async () => {
+    if (!id) return;
     const confirmed = window.confirm('Вы уверены, что хотите удалить этот товар?');
     if (!confirmed) return;
 
@@ -53,8 +61,11 @@ export const ProductDetailPage = () => {
       await deleteProduct(id);
       alert('Товар успешно удален!');
       navigate('/');
-    } catch (err) {
-      alert('Ошибка при удалении товара: ' + (err.message || 'Попробуйте позже'));
+    } catch (err: unknown) {
+      const message = axios.isAxiosError<{ message?: string }>(err)
+        ? err.response?.data?.message || err.message
+        : 'Попробуйте позже';
+      alert('Ошибка при удалении товара: ' + message);
       setIsDeleting(false);
     }
   };

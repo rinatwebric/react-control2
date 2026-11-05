@@ -1,4 +1,4 @@
-export const getCleanImageUrl = (url) => {
+export const getCleanImageUrl = (url?: string): string => {
   if (!url) return 'https://placehold.co/400x300?text=No+Image';
   try {
     const clean = url.replace(/^[["']+|[\]"']+$/g, '');

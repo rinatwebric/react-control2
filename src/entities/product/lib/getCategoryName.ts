@@ -1,4 +1,6 @@
-export const CATEGORY_MAP = {
+import type { Category } from '../model/types';
+
+export const CATEGORY_MAP: Record<number, string> = {
   1: 'Одежда',
   2: 'Электроника',
   3: 'Мебель',
@@ -7,7 +9,7 @@ export const CATEGORY_MAP = {
   6: 'Аксессуары',
 };
 
-export const getCategoryName = (category) => {
+export const getCategoryName = (category?: Category | string): string => {
   if (!category) return '';
   if (typeof category === 'string') {
     return category;

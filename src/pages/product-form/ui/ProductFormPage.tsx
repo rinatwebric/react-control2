@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
+import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   getProductById,
@@ -7,15 +9,24 @@ import {
   getCategories,
   getCleanImageUrl,
 } from '@/entities/product';
+import type { Category } from '@/entities/product';
 import styles from './ProductFormPage.module.css';
+
+interface ProductFormData {
+  title: string;
+  price: string;
+  description: string;
+  categoryId: string;
+  imageUrl: string;
+}
 
 export const ProductFormPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const isEditMode = Boolean(id);
 
-  const [categories, setCategories] = useState([]);
-  const [formData, setFormData] = useState({
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [formData, setFormData] = useState<ProductFormData>({
     title: '',
     price: '',
     description: '',
@@ -26,7 +37,7 @@ export const ProductFormPage = () => {
   const [surname, setSurname] = useState('');
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(isEditMode);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const init = async () => {
@@ -34,18 +45,18 @@ export const ProductFormPage = () => {
         const cats = await getCategories();
         setCategories(cats || []);
 
-        if (isEditMode) {
+        if (isEditMode && id) {
           const product = await getProductById(id);
           const rawImg = Array.isArray(product.images) ? product.images[0] : '';
           setFormData({
             title: product.title || '',
-            price: product.price || '',
+            price: String(product.price || ''),
             description: product.description || '',
-            categoryId: product.category?.id || (cats[0]?.id || ''),
+            categoryId: String(product.category?.id || cats[0]?.id || ''),
             imageUrl: getCleanImageUrl(rawImg) || '',
           });
         } else if (cats && cats.length > 0) {
-          setFormData((prev) => ({ ...prev, categoryId: cats[0].id }));
+          setFormData((prev) => ({ ...prev, categoryId: String(cats[0].id) }));
         }
       } catch {
         setError('Не удалось загрузить данные формы');
@@ -57,12 +68,12 @@ export const ProductFormPage = () => {
     init();
   }, [id, isEditMode]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
 
@@ -93,7 +104,7 @@ export const ProductFormPage = () => {
 
     try {
       setLoading(true);
-      if (isEditMode) {
+      if (isEditMode && id) {
         await updateProduct(id, payload);
         alert('Товар успешно обновлен!');
         navigate(`/products/${id}`);
@@ -106,8 +117,11 @@ export const ProductFormPage = () => {
           navigate('/');
         }
       }
-    } catch (err) {
-      setError('Ошибка при сохранении: ' + (err.response?.data?.message || err.message));
+    } catch (err: unknown) {
+      const message = axios.isAxiosError<{ message?: string }>(err)
+        ? err.response?.data?.message || err.message
+        : 'Попробуйте позже';
+      setError('Ошибка при сохранении: ' + message);
     } finally {
       setLoading(false);
     }
@@ -231,7 +245,7 @@ export const ProductFormPage = () => {
           </label>
           <textarea
             name="description"
-            rows="4"
+            rows={4}
             value={formData.description}
             onChange={handleChange}
             placeholder="Подробное описание товара..."
